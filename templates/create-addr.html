@@ -1,0 +1,63 @@
+{% extends "Masterpage.html" %}
+{% block content %}
+  <!--CREATE START-->
+  <div id="create" class="section-padding">
+  	<div class="container">
+  		<div class="row">
+  			<div class="page-title text-center ">
+  				<h1>Generate An Address</h1>
+  				<hr class="pg-titl-bdr-btm"></hr>
+                <p><a href="" data-toggle="modal" data-target="#seedKey" id="g_seed">Click</a> the button below to generate your blockchain wallet</p>
+  			</div>
+
+  			<div id="errormessage"></div>
+
+  			<div class="form-sec form-sec1">
+  				<form role="form" class="addressForm" id="addressForm">
+                    <div class=" form-group">
+                        <label for="publicKey">Public Key</label>
+                        <textarea name="publicKey" id="publicKey" class="form-control textarea_field" readonly></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="privateKey">Private Key</label>
+                      <textarea name="privateKey" id="privateKey" class="form-control textarea_field" readonly></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="addressKey">Address</label>
+                      <input type="text" name="addressKey" class="form-control text-field-box field" id="addressKey" readonly style="text-align: left"/>
+                    </div>
+
+                    <div class="form-group">
+                      <button class="button-medium" id="launch-submit1" type="button" name="launch" form="addressForm">Generate</button>
+                    </div>
+                </form>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <!--CREATE END-->
+
+  <!--POPUP START-->
+	<div class="modal center" id="seedKey">
+		<div class="modal-dialog" style="display: table;vertical-align: middle;">
+
+			<!--    Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<img src="../static/img/logo (16).png" width="160" height="53" alt="Logo">
+
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<!-- <div class="close">+</div> -->
+					<h2 style="font-weight: bold">SEED KEY</h2>
+                    <input type="text" name="seedKey" class="form-control text-field-box" id="seed1" readonly style="text-align: left   "/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--POPUP END-->
+
+{% endblock %}

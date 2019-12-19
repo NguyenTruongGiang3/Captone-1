@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class=" js no-touch">
+
+<head>
+  <title>Voting System</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="../static/js/countdown-timer.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- <script src="../static/js/jquery.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+	<script src="../static/js/jquery.easing.min.js"></script>
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="../static/js/slick.min.js"></script>
+	<script type="text/javascript" src="../static/js/custom.js"></script>
+	<script src="../static/contactform/contactform.js"></script>
+    <script src="../static/js/jquery.countdown.js"></script>
+    <link rel="stylesheet" href="../static/css/image-picker.css">
+	<script src="http://code.dappbench.com/browser-solc.min.js"></script>
+	<script src="../static/contracts/contractService.js"></script>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script src="../static/js/bootstrap.min.js"></script>
+	<!-- dataTable -->
+	<script src="../static/js/jquery.dataTables.min.js"></script>
+	<script src="../static/js/dataTables.bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../static/css/dataTables.bootstrap.min.css" />
+	<!-- datatimepicker -->
+	<script src="../static/js/jquery.datetimepicker.full.js"></script>
+	<link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.min.css" />
+	<!-- font -->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600|Raleway:600,300|Josefin+Slab:400,700,600italic,600,400italic'
+	 rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../static/css/slick-team-slider.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	<link rel="shortcut icon" href="../static/img/ico/logo (18).ico">
+    <!-- countdown -->
+
+</head>
+
+<body>
+  <!--HEADER START-->
+	<div class="main-navigation navbar-fixed-top">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="brand">
+						<img src="../static/img/logo (15).png" width="150" height="49" alt="Logo" />
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-link" id="createv1"><a href="/create">Create Voting</a></li>
+						<li class="nav-link" id="informationv1"><a href="/information">Voting Info</a></li>
+                        <li class="nav-link" id="generateaddr"><a href="/generateaddr">Create Address</a></li>
+						<!-- <li><a href="#create-voter-add">Create Voter Address</a></li> -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<!--HEADER END-->
+
+  <div class="cta-1">
+  	<div class="container">
+  		<!-- div ảo không được xóa -->
+  	</div>
+  </div>
+  {% block content %}{% endblock %}
+   <!--FOOTER START-->
+  <footer class="footer section-padding">
+    <div class="container">
+      <div class="row">
+        <div style="visibility: visible; animation-name: zoomIn;" class="col-sm-12 text-center wow zoomIn">
+          <h3>Follow us on</h3>
+          <div class="footer_social">
+            <ul>
+              <li><a class="f_facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="f_twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="f_google" href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a class="f_linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!--- END COL -->
+      </div>
+      <!--- END ROW -->
+    </div>
+    <!--- END CONTAINER -->
+  </footer>
+  <div class="footer-bottom">
+    <div class="container">
+      <div style="visibility: visible; animation-name: zoomIn;" class="col-md-12 text-center wow zoomIn">
+        <div class="footer_copyright">
+          <p> © Copyright, All Rights Reserved.</p>
+          <div class="">
+            Designed by Voting System Design Team
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FOOTER END-->
+
+	<!-- JS START -->
+
+	<script>
+		function readProposal(evt) {
+			//Retrieve the first (and only!) File from the FileList object
+			var f = evt.target.files[0];
+
+			if (f) {
+				var r = new FileReader();
+				r.onload = function (e) {
+					var contents = e.target.result;
+					var lines = contents.split("\n");
+
+					for (var i = 0, len = lines.length; i < len - 1; i++) {
+						let str = lines[i].split(",", 2);
+						$('#data-table').append(`<tr><td class="attrName">${str[0]}</td><td class="attrAddr">${str[1]}</td></tr>`);
+					}
+				}
+				r.readAsText(f);
+			} else {
+				alert("Failed to load file");
+			}
+		}
+
+		function readVoter(evt) {
+			//Retrieve the first (and only!) File from the FileList object
+			var f = evt.target.files[0];
+
+			if (f) {
+				var r = new FileReader();
+				r.onload = function (e) {
+					var contents = e.target.result;
+					var lines = contents.split("\n");
+
+					for (var i = 0, len = lines.length; i < len - 1; i++) {
+						let str = lines[i].split(",", 2);
+						$('#data-table-voter').append(`<tr><td class="attrName">${str[0]}</td><td class="attrAddr">${str[1]}</td></tr>`);
+					}
+				}
+				r.readAsText(f);
+			} else {
+				alert("Failed to load file");
+			}
+		}
+		document.getElementById('csv_file').addEventListener('change', readProposal, false);
+		document.getElementById('csv_file_voter').addEventListener('change', readVoter, false);
+	</script>
+	<!-- JS INPUT CANDIDATE START-->
+	<script>
+		$(document).ready(function () {
+			var wrapper = $("#onebyone"); //Fields wrapper
+			var html = '<table><tr><td class="col-md-1 candi_input"><input type="text" class="candi form-control text-field-box " placeholder="Candidate Name" required /></td>' + '<td class="col-md-1 candi_input"><input type="text" class="candi form-control text-field-box " placeholder="Address Candidate" required /></td>' +
+				'<td class="col-md-1" style="padding: 0"><button class="remove_field button-mini"> x </button></td></tr></table>';
+
+			$(".plus").click(function () {
+				$(wrapper).append(html);
+			});
+
+			$(wrapper).on("click", ".remove_field", function (e) {
+				e.preventDefault();
+				$(this).parentsUntil("table").remove(); // Gỡ bỏ input field
+			});
+		});
+	</script>
+	<!-- JS INPUT CANDIDATE END -->
+
+
+	<!-- JS SELECTTIME START -->
+	<script>
+		$(".datetimepicker").datetimepicker({
+			step: 3
+		});
+	</script>
+	<!-- JS SELECT TIME END -->
+
+{#    <script>#}
+{#		$(document).ready(function () {#}
+{#			var myDate = new Date();#}
+{#			myDate.setDate(myDate.getDate() + 2);#}
+{#			$("#countdown").countdown(myDate, function (event) {#}
+{#				$(this).html(#}
+{#					event.strftime(#}
+{#						'<div class="timer-wrapper"><div class="time">%D</div><span class="text">days</span></div><div class="timer-wrapper"><div class="time">%H</div><span class="text">hrs</span></div><div class="timer-wrapper"><div class="time">%M</div><span class="text">mins</span></div><div class="timer-wrapper"><div class="time">%S</div><span class="text">sec</span></div>'#}
+{#                    )#}
+{#                );#}
+{#			});#}
+{#		});#}
+{#	</script>#}
+
+	<!-- JS TIME-->
+	<!-- JS VOTING INFO END-->
+  <script src="../static/js/jquery.easing.min.js"></script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="../static/js/slick.min.js"></script>
+  <script type="text/javascript" src="../static/js/custom.js"></script>
+  <script src="../static/js/generateaddr.js"></script>
+  <script src="../static/js/main.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+<!-- JS END -->
+
+</body>
+</html>

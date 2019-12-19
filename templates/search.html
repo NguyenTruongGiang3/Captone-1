@@ -1,0 +1,58 @@
+{% extends "Masterpage.html" %}
+{% block content %}
+    <!--SEARCH START-->
+	<div id="search" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="page-title text-center">
+					<h1>Search Voting</h1>
+					<hr class="pg-titl-bdr-btm">
+					</hr>
+				</div>
+				<div id="errormessage"></div>
+
+				<div class="form-sec form-sec1">
+					<form autocomplete="off" action="" role="form" class="contactForm" >
+						<div class="col-md-12 form-group">
+							<label for="voteAdd">Enter Voting Name</label>
+							<table>
+								<tr>
+									<td class="col-xs-11 col-md-8 candi_input autocomplete"><input type="text" class="form-control text-field-box" name="electionAdd"
+										 id="electionAdd" placeholder="Search by Voting Name" data-msg="Please press load to load address" /></td>
+									<td class="col-xs-1 col-md-1 candi_input"><button class="button-mini" id="search-submit" type="button" onclick="research()" name="search">Search</button></td>
+								</tr>
+							</table>
+							<div class="validation"></div>
+						</div>
+
+						<div class="col-md-12 form-group">
+							<label for="search">Search Result</label>
+							<table class="table table-bordered">
+								<tr>
+									<th>Voting Name</th>
+									<th>Voting Address</th>
+									<th>Creator Address</th>
+									<th>Information</th>
+								</tr>
+								<tr>
+									<td><a id="vtName"></a></td>
+                                    <td> <a id="vtAddr"></a></td>
+									<td id="creatorAddr"></td>
+									<td>
+										<p style="font-weight: bold">Time Remaining:</p>
+										<p id="countdown1"></p>
+									</td>
+								</tr>
+								<tr>
+									<div class="validation"></div>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--SEARCH END-->
+
+{% endblock %}

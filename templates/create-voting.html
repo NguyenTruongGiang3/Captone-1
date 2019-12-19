@@ -1,0 +1,108 @@
+{% extends "Masterpage.html" %}
+{% block content %}
+    <!--CREATE START-->
+	<div id="create" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="page-title text-center ">
+					<h1>Create New Voting</h1>
+					<hr class="pg-titl-bdr-btm">
+					</hr>
+				</div>
+				<div>
+					<p id="accountAddress"></p>
+				</div>
+				<div id="sendmessage"></div>
+				<div id="errormessage"></div>
+
+				<div class="form-sec form-sec1">
+					<form action="" method="post" role="form" class="contactForm" id="createForm">
+
+						<div class="col-md-12 form-group">
+							<label for="voteName">Voting Name</label>
+							<input type="text" name="eName" class="form-control text-field-box" id="eName" placeholder="Your Voting Name"
+							 required />
+						</div>
+
+						<div class="col-md-12 form-group">
+							<table>
+								<tr>
+									<td><label for="start">Start</label></td>
+									<td><label for="end">End</label></td>
+								</tr>
+								<tr>
+									<td><input id="startDate" type="button" class="datetimepicker form-control text-field-box" name="start" value="Select time"
+										 required style="margin-right: 65px" /></td>
+									<td><input id="endDate" type="button" class="datetimepicker form-control text-field-box" name="end" value="Select time"
+										 required style="margin-right: 65px" /></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+					</div>
+
+					<div class="form-sec form-sec1">
+					<div class="col-md-8 form-group">
+
+						<div class="tab-content ">
+							<div id="uploadfile" class="tab-pane fade in active">
+
+								<table>
+									<form id="upload_csv" enctype="multipart/form-data">
+										<tr>
+											<td><label>Choose Proposals</label></td>
+											<td><input type="file" name="csv_file" id="csv_file" class="col-xs-12 col-md-11" style="margin-right: 48px" /></td>
+										</tr>
+									</form>
+									<div class="table-responsive">
+										<table class="table table-striped table-bordered" id="data-table">
+											<thead>
+												<tr>
+													<th>Candidate Name</th>
+													<th>Candidate Address</th>
+												</tr>
+											</thead>
+											<tbody>
+
+											</tbody>
+										</table>
+									</div>
+								</table>
+
+								<table>
+									<form id="upload_csv_voter" enctype="multipart/form-data">
+										<tr>
+											<td><label>Choose Voters</label></td>
+											<td><input type="file" name="csv_file_voter" id="csv_file_voter" class="col-xs-12 col-md-11" style="margin-right: 48px" /></td>
+										</tr>
+									</form>
+									<div class="table-responsive">
+										<table class="table table-striped table-bordered" id="data-table-voter">
+											<thead>
+												<tr>
+													<th>Voter Name</th>
+													<th>Voter Address</th>
+												</tr>
+											</thead>
+											<tbody>
+
+											</tbody>
+										</table>
+									</div>
+								</table>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-12 form-group">
+						<button class="button-medium" name="launch" onclick="clickLaunch()">Launch</button>
+						<!-- <p class="electionAdd" style="display: none; color: red;"></p> -->
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--CREATE END-->
+
+{% endblock %}

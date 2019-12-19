@@ -1,0 +1,70 @@
+{% extends "Masterpage.html" %}
+{% block content %}
+
+
+	<!--VOTING INFO START-->
+	<div id="information" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="page-title text-center">
+					<h1>Voting Information</h1>
+					<hr class="pg-titl-bdr-btm">
+
+					</hr>
+				</div>
+				<div id="errormessage"></div>
+
+{#                <div class="form-sec form-sec1">#}
+                    <table class="table table-bordered">
+								<tr>
+									<th>Voting Name: </th>
+									<td id="inforvtName">{{ votingName }}</td>
+								</tr>
+								<tr>
+									<th>Voting Address</th>
+									<td id="inforvtAddr">{{ votingAddr }}</td>
+								</tr>
+								<tr>
+									<th>Creator Address</th>
+									<td id="inforcreatorAddr">{{ creator }}</td>
+								</tr>
+                    </table>
+{#                </div>#}
+
+				<div class="form-sec form-sec1">
+					<form action="" method="post" role="form" class="contactForm contactForm111">
+
+
+                        <div class="col-md-12 form-group">
+                            <p style="font-weight: bold; text-align: center">Time Remaining:</p>
+{#                            <p id="countdown"></p>#}
+                            <div class="countdown-timer-wrapper">
+								<div class="timer" id="countdown"></div>
+							</div>
+                            <div class="col-md-12 form-group">
+					            <button class="button-medium btnFinish" name="finish" onclick="clickFinish()">Finish</button>
+				            </div>
+                        </div>
+						<div class="col-md-12 form-group">
+							<table>
+								<tr>
+									<td><label for="candidate">Candidates List &nbsp;</label></td>
+									<td><label id="alertcheck" style="color: red;"></label></td>
+								</tr>
+							</table>
+
+							<div id="paintingTemplate" class="frameProposals" >
+
+							</div>
+						</div>
+
+{#						<div class="col-md-12 form-group">#}
+{#							<button class="button-medium" id="vote-submit" type="submit" name="vote" onclick="clickVote()">Vote</button>#}
+{#						</div>#}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--VOTING INFO END-->
+{% endblock %}
